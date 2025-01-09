@@ -1,3 +1,17 @@
+// This is a VS Code workspace configuration file for the Bitcoin project.
+// It includes the following sections:
+// - "folders": Specifies the folders that are part of the workspace.
+//   - The first folder is the parent directory of the current workspace.
+//   - The second folder is a GitLens virtual folder representing a specific commit (da27687) of the Bitcoin repository.
+// - "settings": Currently empty, but can be used to specify workspace-specific settings.
+// - "launch": Contains debug configurations.
+//   - "version": The version of the launch configuration schema.
+//   - "configurations": An array of debug configurations.
+//     - "name": The name of the debug configuration ("Attach to Process").
+//     - "type": The type of debugger to use ("go").
+//     - "request": The type of request ("attach").
+//     - "mode": The mode of the debugger ("local").
+//     - "processId": The process ID to attach to (currently set to 0, which should be replaced with the actual process ID).
 {
 	"folders": [
 		{
@@ -8,5 +22,18 @@
 			"uri": "gitlens://7b22726566223a2264613237363837383835376539376561386162333136323838386138623032613165613931326433222c227265706f50617468223a22633a2f55736572732f55736572312f626974636f696e227d/c:/Users/User1/bitcoin?{\"ref\":\"da27687\"}"
 		}
 	],
-	"settings": {}
+	"settings": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Attach to Process",
+				"type": "go",
+				"request": "attach",
+				"mode": "local",
+				"processId": 0
+			}
+
+		]
+	}
 }

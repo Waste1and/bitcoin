@@ -15,6 +15,8 @@
   - All lower-case letters except for 'l'
 */
 
+/// @brief 
+/// @param parent 
 BitcoinAddressEntryValidator::BitcoinAddressEntryValidator(QObject *parent) :
     QValidator(parent)
 {

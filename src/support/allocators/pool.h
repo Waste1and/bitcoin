@@ -332,6 +332,14 @@ public:
     }
 };
 
+/// @brief 
+/// @tparam T1 
+/// @tparam T2 
+/// @tparam MAX_BLOCK_SIZE_BYTES 
+/// @tparam ALIGN_BYTES 
+/// @param a 
+/// @param b 
+/// @return 
 template <class T1, class T2, std::size_t MAX_BLOCK_SIZE_BYTES, std::size_t ALIGN_BYTES>
 bool operator==(const PoolAllocator<T1, MAX_BLOCK_SIZE_BYTES, ALIGN_BYTES>& a,
                 const PoolAllocator<T2, MAX_BLOCK_SIZE_BYTES, ALIGN_BYTES>& b) noexcept

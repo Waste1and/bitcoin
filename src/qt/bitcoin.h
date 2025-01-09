@@ -25,6 +25,7 @@ class PlatformStyle;
 class SplashScreen;
 class WalletController;
 class WalletModel;
+/// @brief 
 namespace interfaces {
 class Init;
 } // namespace interfaces
@@ -107,6 +108,10 @@ private:
     void startThread();
 };
 
+/// @brief 
+/// @param argc 
+/// @param argv 
+/// @return 
 int GuiMain(int argc, char* argv[]);
 
 #endif // BITCOIN_QT_BITCOIN_H

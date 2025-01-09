@@ -37,6 +37,7 @@
 #include <util/translation.h>
 #include <validation.h>
 
+#define ENABLE_WALLET
 #ifdef ENABLE_WALLET
 #include <qt/paymentserver.h>
 #include <qt/walletcontroller.h>
@@ -206,6 +207,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 static int qt_argc = 1;
 static const char* qt_argv = "bitcoin-qt";
 
+/// @brief 
 BitcoinApplication::BitcoinApplication()
     : QApplication(qt_argc, const_cast<char**>(&qt_argv))
 {
@@ -238,6 +240,7 @@ BitcoinApplication::~BitcoinApplication()
 }
 
 #ifdef ENABLE_WALLET
+/// @brief 
 void BitcoinApplication::createPaymentServer()
 {
     paymentServer = new PaymentServer(this);
@@ -475,6 +478,8 @@ bool BitcoinApplication::event(QEvent* e)
     return QApplication::event(e);
 }
 
+/// @brief 
+/// @param argsman 
 static void SetupUIArgs(ArgsManager& argsman)
 {
     argsman.AddArg("-choosedatadir", strprintf("Choose data directory on startup (default: %u)", DEFAULT_CHOOSE_DATADIR), ArgsManager::ALLOW_ANY, OptionsCategory::GUI);
@@ -520,7 +525,7 @@ int GuiMain(int argc, char* argv[])
     QApplication::setAttribute(Qt::AA_DontUseNativeDialogs);
 #endif
 
-    BitcoinApplication app;
+    BitcoinApplication app(argc, argv);
     GUIUtil::LoadFont(QStringLiteral(":/fonts/monospace"));
 
     /// 2. Parse command-line options. We do this after qt in order to show an error if there are problems parsing these
@@ -533,7 +538,7 @@ int GuiMain(int argc, char* argv[])
         // Create a message box, because the gui has neither been created nor has subscribed to core signals
         QMessageBox::critical(nullptr, CLIENT_NAME,
             // message cannot be translated because translations have not been initialized
-            QString::fromStdString("Error parsing command line arguments: %1.").arg(QString::fromStdString(error)));
+            QObject::tr("Error parsing command line arguments: %1.").arg(QString::fromStdString(error)));
         return EXIT_FAILURE;
     }
 
@@ -701,4 +706,26 @@ int GuiMain(int argc, char* argv[])
         app.handleRunawayException(QString::fromStdString(app.node().getWarnings().translated));
     }
     return app.node().getExitStatus();
+}
+
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "build",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "."
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
 }
