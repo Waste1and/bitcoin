@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/bitcoin-build-config.h.in
+    ${CMAKE_CURRENT_BINARY_DIR}/bitcoin-build-config.h
+)
+
 #
 # Copyright (c) 2019-present The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying

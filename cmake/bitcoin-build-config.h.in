@@ -1,149 +1,137 @@
-// Copyright (c) 2023-present The Bitcoin Core developers
+// Copyright (c) 2011-2023 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
-// file COPYING or https://opensource.org/license/mit/.
+// file COPYING or https://opensource.org/licenses/MIT.
 
 #ifndef BITCOIN_CONFIG_H
 #define BITCOIN_CONFIG_H
 
+/*------------------------- Version Information -------------------------*/
+
 /* Version Build */
-#define CLIENT_VERSION_BUILD @CLIENT_VERSION_BUILD@
+#define BITCOIN_VERSION_BUILD 1
 
 /* Version is release */
-#define CLIENT_VERSION_IS_RELEASE @CLIENT_VERSION_IS_RELEASE@
+#define BITCOIN_VERSION_IS_RELEASE 1
 
 /* Major version */
-#define CLIENT_VERSION_MAJOR @CLIENT_VERSION_MAJOR@
+#define BITCOIN_VERSION_MAJOR 24
 
 /* Minor version */
-#define CLIENT_VERSION_MINOR @CLIENT_VERSION_MINOR@
+#define BITCOIN_VERSION_MINOR 0
 
-/* Copyright holder(s) before %s replacement */
-#define COPYRIGHT_HOLDERS "@COPYRIGHT_HOLDERS@"
+/* Version String */
+#define BITCOIN_VERSION_STRING "24.0.1"
 
-/* Copyright holder(s) */
-#define COPYRIGHT_HOLDERS_FINAL "@COPYRIGHT_HOLDERS_FINAL@"
+/*------------------------- Copyright Information -------------------------*/
 
-/* Replacement for %s in copyright holders string */
-#define COPYRIGHT_HOLDERS_SUBSTITUTION "@CLIENT_NAME@"
+/* Copyright holders */
+#define BITCOIN_COPYRIGHT_HOLDERS "The Bitcoin Core Developers"
 
 /* Copyright year */
-#define COPYRIGHT_YEAR @COPYRIGHT_YEAR@
+#define BITCOIN_COPYRIGHT_YEAR 2023
 
-/* Define this symbol to build code that uses ARMv8 SHA-NI intrinsics */
-#cmakedefine ENABLE_ARM_SHANI 1
+/*------------------------- Build Configuration -------------------------*/
 
-/* Define this symbol to build code that uses AVX2 intrinsics */
-#cmakedefine ENABLE_AVX2 1
+/* Enable ARM SHA-NI intrinsics */
+#define ENABLE_ARM_SHANI 1
 
-/* Define if external signer support is enabled */
-#cmakedefine ENABLE_EXTERNAL_SIGNER 1
+/* Enable AVX2 intrinsics */
+#define ENABLE_AVX2 1
 
-/* Define this symbol to build code that uses SSE4.1 intrinsics */
-#cmakedefine ENABLE_SSE41 1
+/* Enable external signer */
+#define ENABLE_EXTERNAL_SIGNER 1
 
-/* Define to 1 to enable tracepoints for Userspace, Statically Defined Tracing
-   */
-#cmakedefine ENABLE_TRACING 1
+/* Enable SSE4.1 intrinsics */
+#define ENABLE_SSE41 1
 
-/* Define to 1 to enable wallet functions. */
-#cmakedefine ENABLE_WALLET 1
+/* Enable tracing */
+#define ENABLE_TRACING 1
 
-/* Define this symbol to build code that uses x86 SHA-NI intrinsics */
-#cmakedefine ENABLE_X86_SHANI 1
+/* Enable wallet */
+#define ENABLE_WALLET 1
 
-/* Define to 1 if you have the declaration of `fork', and to 0 if you don't.
-   */
-#cmakedefine01 HAVE_DECL_FORK
+/* Enable X86 SHA-NI intrinsics */
+#define ENABLE_X86_SHANI 1
 
-/* Define to 1 if you have the declaration of `freeifaddrs', and to 0 if you
-   don't. */
-#cmakedefine01 HAVE_DECL_FREEIFADDRS
+/*------------------------- Platform-Specific Features -------------------------*/
 
-/* Define to 1 if you have the declaration of `getifaddrs', and to 0 if you
-   don't. */
-#cmakedefine01 HAVE_DECL_GETIFADDRS
+/* Define if fdatasync is available */
+#define HAVE_FDATASYNC 1
 
-/* Define to 1 if you have the declaration of `pipe2', and to 0 if you don't.
-   */
-#cmakedefine01 HAVE_DECL_PIPE2
+/* Define if getentropy is available */
+#define HAVE_GETENTROPY_RAND 1
 
-/* Define to 1 if you have the declaration of `setsid', and to 0 if you don't.
-   */
-#cmakedefine01 HAVE_DECL_SETSID
+/* Define if getrandom is available */
+#define HAVE_GETRANDOM 1
 
-/* Define to 1 if fdatasync is available. */
-#cmakedefine HAVE_FDATASYNC 1
+/* Define if malloc_info is available */
+#define HAVE_MALLOC_INFO 1
 
-/* Define this symbol if the BSD getentropy system call is available with
-   sys/random.h */
-#cmakedefine HAVE_GETENTROPY_RAND 1
+/* Define if mallopt M_ARENA_MAX is available */
+#define HAVE_MALLOPT_ARENA_MAX 1
 
-/* Define this symbol if the Linux getrandom function call is available */
-#cmakedefine HAVE_GETRANDOM 1
+/* Define if O_CLOEXEC flag is available */
+#define HAVE_O_CLOEXEC 1
 
-/* Define this symbol if you have malloc_info */
-#cmakedefine HAVE_MALLOC_INFO 1
+/* Define if posix_fallocate is available */
+#define HAVE_POSIX_FALLOCATE 1
 
-/* Define this symbol if you have mallopt with M_ARENA_MAX */
-#cmakedefine HAVE_MALLOPT_ARENA_MAX 1
+/* Define if Unix domain sockets are supported */
+#define HAVE_SOCKADDR_UN 1
 
-/* Define to 1 if O_CLOEXEC flag is available. */
-#cmakedefine01 HAVE_O_CLOEXEC
+/* Define if strong getauxval support is available */
+#define HAVE_STRONG_GETAUXVAL 1
 
-/* Define this symbol if you have posix_fallocate */
-#cmakedefine HAVE_POSIX_FALLOCATE 1
+/* Define if sysctl is available */
+#define HAVE_SYSCTL 1
 
-/* Define this symbol if platform supports unix domain sockets */
-#cmakedefine HAVE_SOCKADDR_UN 1
+/* Define if sysctl(KERN_ARND) is available */
+#define HAVE_SYSCTL_ARND 1
 
-/* Define this symbol to build code that uses getauxval */
-#cmakedefine HAVE_STRONG_GETAUXVAL 1
+/* Define if std::system or ::wsystem is available */
+#define HAVE_SYSTEM 1
 
-/* Define this symbol if the BSD sysctl() is available */
-#cmakedefine HAVE_SYSCTL 1
+/* Define if <sys/prctl.h> is available */
+#define HAVE_SYS_PRCTL_H 1
 
-/* Define this symbol if the BSD sysctl(KERN_ARND) is available */
-#cmakedefine HAVE_SYSCTL_ARND 1
+/* Define if <sys/resources.h> is available */
+#define HAVE_SYS_RESOURCES_H 1
 
-/* Define to 1 if std::system or ::wsystem is available. */
-#cmakedefine HAVE_SYSTEM 1
+/* Define if <sys/vmmeter.h> is available */
+#define HAVE_SYS_VMMETER_H 1
 
-/* Define to 1 if you have the <sys/prctl.h> header file. */
-#cmakedefine HAVE_SYS_PRCTL_H 1
+/* Define if <vm/vm_param.h> is available */
+#define HAVE_VM_VM_PARAM_H 1
 
-/* Define to 1 if you have the <sys/resources.h> header file. */
-#cmakedefine HAVE_SYS_RESOURCES_H 1
+/*------------------------- Optional Features -------------------------*/
 
-/* Define to 1 if you have the <sys/vmmeter.h> header file. */
-#cmakedefine HAVE_SYS_VMMETER_H 1
+/* Enable DBus support */
+#define ENABLE_DBUS 1
 
-/* Define to 1 if you have the <vm/vm_param.h> header file. */
-#cmakedefine HAVE_VM_VM_PARAM_H 1
+/* Enable QR Code support */
+#define ENABLE_QRCODE 1
 
-/* Define to the address where bug reports for this package should be sent. */
-#define CLIENT_BUGREPORT "@CLIENT_BUGREPORT@"
+/* Enable SQLite support */
+#define ENABLE_SQLITE 1
 
-/* Define to the full name of this package. */
-#define CLIENT_NAME "@CLIENT_NAME@"
+/*------------------------- Debugging and Metadata -------------------------*/
 
-/* Define to the home page for this package. */
-#define CLIENT_URL "@PROJECT_HOMEPAGE_URL@"
+/* Build Timestamp */
+#define BUILD_TIMESTAMP "@BUILD_TIMESTAMP@"
 
-/* Define to the version of this package. */
-#define CLIENT_VERSION_STRING "@CLIENT_VERSION_STRING@"
+/* Git Commit Hash (replace dynamically during build) */
+#define GIT_COMMIT_HASH "@GIT_COMMIT_HASH@"
 
-/* Define to 1 if strerror_r returns char *. */
-#cmakedefine STRERROR_R_CHAR_P 1
+/* Address for bug reports */
+#define BITCOIN_BUGREPORT "bugs@bitcoincore.org"
 
-/* Define if BDB support should be compiled in */
-#cmakedefine USE_BDB 1
+/* Home page */
+#define BITCOIN_HOMEPAGE_URL "https://bitcoincore.org"
 
-/* Define if dbus support should be compiled in */
-#cmakedefine USE_DBUS 1
+/*------------------------- Safety Checks -------------------------*/
 
-/* Define if QR support should be compiled in */
-#cmakedefine USE_QRCODE 1
+#if !defined(BITCOIN_VERSION_MAJOR) || !defined(BITCOIN_VERSION_MINOR)
+#error "Bitcoin version must be defined"
+#endif
 
-/* Define if sqlite support should be compiled in */
-#cmakedefine USE_SQLITE 1
-
+#endif // BITCOIN_CONFIG_H
