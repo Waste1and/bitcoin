@@ -147,4 +147,3 @@
 /* Define if sqlite support should be compiled in */
 #cmakedefine USE_SQLITE 1
 
-#endif //BITCOIN_CONFIG_H
